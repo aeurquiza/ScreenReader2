@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>ScreenReader</title>
+        <link rel="shortcut icon" href="./img/sr2.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:600i" rel="stylesheet">
+    </head>
+    <body>
+        <ul class="nav nav-tabs bg-dark">
+            <li class="nav-item bg-secondary">
+                <a class="nav-link inactiv" href="./player.html"><img class="icons" src="./img/player.png"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link activ" href="./library.html"><img class="icons" src="./img/library.png"></a>
+            </li>
+       </ul>
+
+       <div class="card-container">
+           <div class="card song spacer mb-3" style="max-width: 540px;">
+               <div class="row no-gutters">
+                   <div class="col-md-4">
+                       <img src="./img/disk.svg" class="card-img">
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h3 class="card-title">DeathandTheMaiden</h3>
+                           <p class="card-text"></p>
+					<input type="button" name="answer" value="Play Song" id="DeathandTheMaiden" onclick="window.location.href='file:///home/aeuc37/ScreenReader/player.html';showDiv(this)"  />
+                        </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="card song spacer mb-3" style="max-width: 540px;">
+               <div class="row no-gutters">
+                   <div class="col-md-4">
+                       <img src="./img/disk.svg" class="card-img">
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h3 class="card-title">IchGrolleNicht</h3>
+                           <p class="card-text"></p>
+					<input type="button" name="answer" value="Play Song" id="IchGrolleNicht" onclick="window.location.href='file:///home/aeuc37/ScreenReader/player.html';showDiv(this)"  />
+                        </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="card song spacer mb-3" style="max-width: 540px;">
+               <div class="row no-gutters">
+                   <div class="col-md-4">
+                       <img src="./img/disk.svg" class="card-img">
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h3 class="card-title">Dalla Sua Pace</h3>
+                           <p class="card-text"></p>
+					<input type="button" name="answer" value="Play Song" id=DallaSuaPace onclick="window.location.href='file:///home/aeuc37/ScreenReader/player.html';showDiv(this)"  />
+                        </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="card song spacer mb-3" style="max-width: 540px;">
+               <div class="row no-gutters">
+                   <div class="col-md-4">
+                       <img src="./img/disk.svg" class="card-img">
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h3 class="card-title">Gute Nacht Schubert</h3>
+                           <p class="card-text"></p>
+					<input type="button" name="answer" value="Play Song" id=GuteNachtSchubert onclick="window.location.href='file:///home/aeuc37/ScreenReader/player.html';showDiv(this)"  />
+                        </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="card song spacer mb-3" style="max-width: 540px;">
+               <div class="row no-gutters">
+                   <div class="col-md-4">
+                       <img src="./img/disk.svg" class="card-img">
+                   </div>
+                   <div class="col-md-8">
+                       <div class="card-body">
+                           <h3 class="card-title">Labas Ravel</h3>
+					<input type="button" name="answer" value="Play Song" id=LabasRavel onclick="window.location.href='file:///home/aeuc37/ScreenReader/player.html';showDiv(this)" />
+                        </div>
+                   </div>
+               </div>	
+           </div>
+       </div>
+       <div id="footer">
+            <img src="./img/ScrnRdr.svg">
+       </div>
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+    </body>
+<script> 
+	function showDiv(songname) {
+//   document.getElementById('labas').style.display = "block";
+  localStorage.setItem("songName",songname.id)
+	var div = document.createElement("div");
+
+	div.innerHTML = '<div display="none" id="labas">    <object data="SheetMusicPDFS/'+songname.id+'.pdf" type="application/pdf" width="1000" height="500"> alt : <a href="SheetMusicPDFS/'+songname.id+'.pdf">test.pdf</a> </object> </div>'
+	document.body.appendChild(div);
+}
+	function removeDiv() {
+//   document.getElementById('labas').style.display = "block";
+	
+	document.body.removeChild(document.getElementById('div'));
+}
+
+
+</script>
+</html>

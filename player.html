@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+    <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>JQuery UI Slider</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script
+    type="text/javascript"
+    src="http://code.jquery.com/jquery-1.8.3.js"
+    
+  ></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+      <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css">
+
+
+ 
+        <title>ScreenReader</title>
+        <link rel="shortcut icon" href="./img/sr2.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:600i" rel="stylesheet">
+    </head>
+    <body>
+       <ul class="nav nav-tabs bg-dark">
+            <li class="nav-item">
+                <a class="nav-link activ" href="./player.html"><img class="icons" src="./img/player.png"></a>
+            </li>
+            <li class="nav-item bg-secondary">
+                <a class="nav-link inactiv" href="./library.html"><img class="icons" src="./img/library.png"></a>
+            </li>
+       </ul>
+       
+       <div class="card text-white bg-info mb-3">
+          <div class="card-header" style="text-align:center;">
+              <h2 id = "songtitle">Der Leiermann</h2>
+          </div>
+          <div class="card-body" id = "song-card">
+            <h5 class="card-title">Play song</h5>
+            <p class="card-text" id="cardtext"></p>
+          </div>
+          <div class="card-body">
+            <div id="controls">
+                <a><img class="icons" img id="repeatPlay" style="width:100%;height:100%;" src="./img/loop.svg">
+                  <label id="bpm">Loop</label></a>
+                <a><img class="icons playPause" img id="playPauseButton" style="width:100%;height:100%;" src="./img/play.svg"> <label id="bpm">Play</label></a>
+                <a id=metronome><img class="icons" img id="metronomeButton" style="width:100%;height:100%;" src="./img/metronome.svg">
+                <label id="bpm">BPM</label> </a>
+            </div>              
+          </div>
+      </div> 
+
+      <div id="footer">
+          <img src="./img/ScrnRdr.svg">
+      </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+//window.onload = alert(localStorage.getItem("songName"));
+window.onload = document.getElementById("songtitle").textContent = localStorage.getItem("songName"); 
+
+  var div = document.getElementById("song-card");
+  var div_to_add = document.createElement("div");
+  div_to_add.innerHTML = '<div id = "sheet-music-div"><img src="img/'+'DallaSuaPace'+'.png" id="sheet-image"></div>' +'<div id = "sheet-music-div"><img src="img/'+localStorage.getItem("songName")+'.png" id="sheet-image2"></div>';
+
+  div.appendChild(div_to_add);
+</script>
+
+  <script type="text/javascript">
+
+
+    $(window).load(function(){
+      
+  var initialValues = [0, 5, 30]
+    updateValue = function (ui) {
+    var hours = Math.floor(ui.value / 60);
+    var minutes = ui.value - (hours * 60);
+
+    if (hours.length == 1) hours = '0' + hours;
+    if (minutes.length == 1) minutes = '0' + minutes;
+    if (minutes == 0) minutes = '00';
+    if (hours >= 12) {
+        if (hours == 12) {
+            hours = hours;
+            minutes = minutes;
+        } else {
+            hours = hours - 12;
+            minutes = minutes;
+        }
+    } else {
+        hours = hours;
+        minutes = minutes ;
+    }
+    if (hours == 0) {
+        hours = 12;
+        minutes = minutes;
+    }
+    var seconds = ui.value
+    if (seconds < 10) seconds = "0"+seconds
+    //console.log(ui.handle)
+    $(ui.handle).attr('data-value', "00" + ':' + seconds);
+};
+
+//var timeLabels = ["00:01","00:02","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00", "00:01","00:02","00:03","00:04","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00", "12:00"];
+(function ($) {
+    $.widget('my-namespace.customSlider', $.ui.slider, {
+      options: {
+            ticks: false
+        },
+    
+        // Called when the slider is instantiated.
+        _create: function() {
+            
+            // Call the orginal constructor, creating the slider normally.
+            this._super();
+    
+            // If the "ticks" option is false or the "step" option is
+            // less than 5, there's nothing to do.
+            if ( !this.options.ticks || this.options.step < 5 ) {
+                return;
+            }
+    
+            // Setup some variables for rendering the tick marks below the slider.
+            var cnt = this.options.min,
+                background = this.element.css( "border-color" ),
+                left;
+    
+            while ( cnt <= this.options.max ) {
+
+                // Compute the "left" CSS property for the next tick mark.
+                left = ( cnt / this.options.max * 100 ).toFixed( 2 ) + "%";
+
+                // Creates the tick div, and adds it to the element. It adds the
+                // "ui-slider-tick" class, which has common properties for each tick.
+                // It also applies the computed CSS properties, "left" and "background".
+                //console.log($("</div>"))
+
+                cnt += this.options.step;
+    
+            }
+            console.log(this.element[0].id)
+            cnt = this.options.min
+            var i = 0;
+            while (cnt <= this.options.max) {
+              //console.log(timeLabels[i])
+
+              cnt = cnt + 4;
+              i++;
+            }
+            //$(".pct-slider#" + sliders[0]).find('.ui-slider-tick').find('.tick-labels').hide()
+        },
+        addValue: function( val ) {
+            this.options.values.push(val);
+            console.log("moved")
+  //          console.log(val)
+            var time = val
+            console.log(time)
+            this._refresh();
+      $($(".ui-slider-handle").last()).attr('data-value', time)
+        },
+        removeValue: function( ) {
+          if (this.options.values.length > 1) {
+              this.options.values.pop( );
+              this._refresh();
+            }
+        }
+    });
+})(jQuery);
+
+var sliders =["mondaySlider", "tuesdaySlider","wednesdaySlider","thursdaySlider","fridaySlider","saturdaySlider","sundaySlider"];
+
+$(".pct-slider#" + sliders[0])
+.customSlider({
+    min: 0,
+    max: 30,
+    step: 1,
+    range: false,
+    ticks: true,
+    values: initialValues,
+    create: function (event, ui) {
+        $.each( initialValues, function(i, v){
+            updateValue({
+                value: v,
+                handle: $(".pct-slider#" + sliders[0]).find('.ui-slider-handle').eq(i) 
+            });
+   
+        });
+    },
+    slide: function (event, ui) {
+        resize_colors();
+    var handleIndex = $('a', event.target).index(ui.handle),
+            curr = ui.values[handleIndex],
+            next = ui.values[handleIndex + 1] - 1,
+            prev = ui.values[handleIndex - 1] + 1;
+            
+        
+        if (curr > next || curr < prev) {
+            return false;
+        }
+        
+    updateValue(ui);
+        
+    //positionSelects();
+  },
+    stop: function(event, ui){
+        resize_colors();
+    }        
+});
+$( ".pct-slider" ).css('background', 'none');
+
+resize_colors()
+
+function resize_colors(){
+var cur_pos = 0;
+$(".ui-slider-handle").each(function(i){
+    console.log("ewwh")
+    console.log($(this).position().left, i)
+    $('.color-region').eq(i).css('width',$(this).position().left-cur_pos)
+    cur_pos = $(this).position().left;
+})
+}
+
+    });
+$("#my-namespace.customSlider").slider('values',0,3);
+
+
+</script>
+
+</head>
+<body>
+    
+
+
+
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "L0jnub6m"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+      var div = document.getElementById("song-card");
+  var div_to_add = document.createElement("slider-div");
+  div_to_add.innerHTML =  '<div class="pct-slider" id="mondaySlider"> <div class="color-region"></div> <div class="color-region"></div> <div class="color-region"></div> </div>'
+
+  div.appendChild(div_to_add);
+  </script>
+
+    </body>
+</html>
+
+

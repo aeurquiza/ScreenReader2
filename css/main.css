@@ -1,0 +1,293 @@
+a.nav-link.inactiv {
+    background-color:#c4c4c4;
+    border-left: 2px solid #6c757d;
+    border-right: 2px solid #6c757d;
+    border-bottom: 1px solid #6c757d;
+    border-top: 4px solid #6c757d;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+}
+
+a.nav-link.inactiv:hover {
+    border-left: 2px solid #6c757d;
+    border-right: 2px solid #6c757d;
+    border-bottom: 1px solid #6c757d;
+    border-top: 4px solid #6c757d;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+}
+
+a.nav-link.activ, a.nav-link.activ:hover {
+    background-color:#c4c4c4;
+    border-left: 2px solid #c4c4c4;
+    border-right: 2px solid #c4c4c4;
+    border-bottom: 2px solid #c4c4c4;
+    border-top: 4px solid #c4c4c4;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+li.nav-item {
+   width:50%;
+   border-top-left-radius:12px;
+   border-top-right-radius:12px;
+}
+
+body {
+    background-color:#c4c4c4;
+}
+
+img {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    height: 93%;
+}
+
+img.icons {
+    display: block;
+    max-width:210px;
+    max-height:80px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+}
+
+a.nav-link.activ img.icons {
+    background-color: #17a2b8;
+    border-radius: 6px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.25) !important;
+    padding:16px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background-color:#baafaf;
+    border-top: #8e8e8e solid 0.1px;
+}
+
+div.card {
+    margin:80px;
+    margin-top:60px;
+    border: 2px solid #25abc0;
+    border-radius: 0px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.25) !important;
+}
+
+div.card.song {
+    background-color:#25abc0;
+    color:white;
+    font-family: 'kanit', sans-serif;
+}
+
+div.spacer {
+    width: 24%;
+    display:inline-block;
+    margin:40px;
+    height:140px;
+}
+
+div.card-body:nth-child(2) {
+    height: 400px;
+}
+
+div.card-body:nth-child(3) {
+    border-top: 2px dotted #13899b;
+    height: 200px;
+}
+
+#cardtext {
+    margin-bottom:100px;
+}
+
+#sheet-image2 {
+    margin-top:50px;
+}
+
+.card-img {
+    background-color:#25abc0;
+    width:70%;
+    height:60%;
+    margin-top:15%;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius: 0px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.25) !important;
+}
+
+.card-container {
+    margin-top:50px;
+    margin-left:140px;
+}
+
+div.col-md-8 {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center 
+}
+
+div.col-md-8 div {
+  margin: 0 
+}
+
+#controls {
+    background-color:#baafaf;
+    width:100%;
+    height:95%;
+    border-radius:90px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.25) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+
+#controls a {
+    margin: 0;
+    margin-left:10%;
+    margin-right:10%;
+    background-color:#708090;
+    border-radius: 8px; 
+}
+
+#bpm{
+    margin-left:70px;
+}
+
+#controls a:hover{
+    background-color:#1d7a89
+}
+
+.song-card {
+  position: relative;
+  margin-top: 20px;
+}
+.sheet-music-div{
+  position: absolute;
+  background-color: yellow;
+}
+
+  .ui-slider-tick {
+        position: absolute;
+        width: 2px;
+        height: 25px;
+        z-index: -1;
+        font-size:11px;
+        margin-top:50px;
+    }
+
+    .tick-labels {
+        margin-top:25px;
+        text-align:center;
+        vertical-align:middle;
+        margin-left:-19px;
+        width:40px;
+        line-height:14px;
+    }
+
+    /*.ui-slider-tick:nth-child(4n+1) {
+        background-color: red!important;
+    }*/
+
+    .ui-slider-tick:nth-child(2n) { /* Times ending in :15 */
+        height:20px;
+    }
+    .ui-slider-tick:nth-child(4n-1) { /* Times ending in :30 */
+        height:15px;
+    }
+
+    .ui-slider-tick:nth-child(4n) { /* Times ending in :45 */
+        height:20px;
+    }
+    .pct-slider {
+        width: 729px;
+        height: 65px;
+        margin-left: 600px;
+        position: absolute;
+        margin-top: -65px;
+    }
+.ui-slider-handle {
+    width:5px !important;
+    height:50px !important;
+    margin-top:3px !important;
+    margin-left:-1px !important;
+    border:0 !important;
+    cursor:ew-resize !important;
+    background:#999 !important;
+    outline:none;
+    background-image:none !important;
+    border-radius:0;
+}
+
+/* Add tooltips to slider handles */
+ .ui-slider-handle:after {
+    content : attr(data-value);
+    position: absolute;
+    bottom: 59px;
+    left: -29px;
+    min-width: 60px;
+    height: 12px;
+    background-color: #999;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: #999 1px solid;
+    color: #fff;
+    font: .7em/1em Arial, Sans-Serif;
+    padding: 2px;
+    text-align: center;
+}
+.ui-slider-handle:before {
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #999;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    top: -8px;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -1px;
+}
+/* markers */
+.markers {
+    margin-top:20px;
+    position:relative;
+    width:100%;
+}
+.one,.two,.three,.four {position:absolute; top:14px; margin-left:-12px}
+
+.pct-slider
+{
+    background-color: white;
+    margin-left: 600px;
+}
+
+.color-region
+{
+    position: relative;
+    height: 100%;
+    float: left;
+    opacity:20%;
+}
+
+
+
+.color-region:nth-child(2)
+{
+    background-color: blue;
+    opacity: .3;
+}
+
+.color-region:nth-child(3)
+{
+    background-color: blue;
+    opacity: .5;
+}
+
